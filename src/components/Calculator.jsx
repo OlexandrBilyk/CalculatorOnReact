@@ -1,7 +1,7 @@
 import CalcButtonPole from "./CalcButtonPole";
 import CalcDisplay from "./CalcDisplay";
 import { useState } from "react";
-import { evaluate, log } from 'mathjs';
+import { evaluate } from 'mathjs';
 
 export default function Calculator() {
     const [displayValue, setDisplayValue] = useState('0')
