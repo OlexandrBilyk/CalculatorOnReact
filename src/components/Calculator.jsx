@@ -1,7 +1,7 @@
 import CalcButtonPole from "./CalcButtonPole";
 import CalcDisplay from "./CalcDisplay";
 import { useState } from "react";
-import { evaluate } from 'mathjs';
+import { evaluate, log } from 'mathjs';
 
 export default function Calculator() {
     const [displayValue, setDisplayValue] = useState('0')
@@ -30,10 +30,15 @@ export default function Calculator() {
                 case ',':
                     const parts = prev.split(/[\+\-\*\/\%]/);
                     const lastNumber = parts[parts.length - 1];
-                    if (!lastNumber.includes('.')) {
-                        return prev + '.';
+
+                    if (
+                        lastNumber === '' ||
+                        lastNumber.includes('.')
+                    ) {
+                        return prev;
                     }
-                    return prev;
+                    return prev + '.';
+
 
                 case '=':
                     if (prev && !operations.includes(prev.slice(-1))) {
